@@ -45,15 +45,22 @@ export default {
         anime.push({
           title: anime_titles[Math.floor(Math.random() * anime_titles.length)],
           description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
         });
       }
       return anime;
     },
+    handleScroll() {
+      if (window.scrollY + window.innerHeight >= document.body.scrollHeight - 50) {
+        const new_anime = this.getAnime();
+        this.anime_list = [...this.anime_list, ...new_anime];
+      }
+    },
   },
 
-  mounted () {
+  mounted() {
     this.anime_list = this.getAnime();
+    window.addEventListener('scroll', this.handleScroll);
   },
 };
 </script>
