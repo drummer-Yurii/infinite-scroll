@@ -1,9 +1,8 @@
 <template>
   <article>
-    <h2>Naruto</h2>
+    <h2>{{ anime.title }}</h2>
     <p>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Alias ipsam reprehenderit similique
-      ut et, nisi cumque nostrum odit temporibus quasi!
+      {{ anime.description }}
     </p>
   </article>
 </template>

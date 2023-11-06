@@ -4,19 +4,58 @@
       <h1>My Anime Feed</h1>
     </header>
     <main>
-      <!-- Articles go here! -->
+      <ThePost v-for="(anime, i) in anime_list" :key="i" :anime="anime" />
     </main>
   </div>
 </template>
 
 <script>
-
+import ThePost from './components/ThePost.vue';
 export default {
   name: 'App',
   components: {
+    ThePost,
+  },
+  data() {
+    return {
+      anime_list: [],
+    };
+  },
 
-  }
-}
+  methods: {
+    getAnime() {
+      const anime_titles = [
+        'Naruto',
+        'Demon Slayer',
+        'Dragon Ball',
+        'My Hero Academia',
+        'Sword Art Online',
+        'Tokyo Ghoul',
+        'Darling in the Franxx',
+        'Code Geas',
+        'One Peas',
+        'Fairy Tail',
+        'Bleach',
+        'Attack on Titan',
+        'Hunter x Hunter',
+      ];
+
+      const anime = [];
+      for (let i = 0; i < 10; i++) {
+        anime.push({
+          title: anime_titles[Math.floor(Math.random() * anime_titles.length)],
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        });
+      }
+      return anime;
+    },
+  },
+
+  mounted () {
+    this.anime_list = this.getAnime();
+  },
+};
 </script>
 
 <style>
